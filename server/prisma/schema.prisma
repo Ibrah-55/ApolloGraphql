@@ -1,0 +1,38 @@
+generator client {
+  provider = "prisma-client-js"
+  binaryTargets = ["rhel-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Link {
+  id          Int    @id @default(autoincrement())
+  createdAt   DateTime @default(now())
+  description String
+  url         String
+  postedById  String?
+  User        User?    @relation(fields: [postedById], references: [id])
+  Vote        Vote[]
+}
+
+model User {
+  id       String @id
+  name     String
+  email    String @unique
+  password String
+  Link     Link[]
+  Vote     Vote[]
+}
+
+model Vote {
+  id     Int    @id @default(autoincrement())
+  linkId Int
+  userId String
+  Link   Link   @relation(fields: [linkId], references: [id])
+  User   User   @relation(fields: [userId], references: [id])
+
+  @@unique([linkId, userId])
+}
