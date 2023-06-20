@@ -5,7 +5,7 @@ const Link = (props) => {
     const {link} = props;
     return (
         <div>
-            <div>
+            <div className="">
                 {link.description}({link.url})
             </div>
         </div>

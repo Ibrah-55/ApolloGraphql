@@ -20,7 +20,7 @@ const LinkList = () => {
   const { data } = useQuery(FEED_QUERY);
 
   return (
-    <div>
+    <div >
       {data && (
         <>
           {data.feed.links.map((link) => (
