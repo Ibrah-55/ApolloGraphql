@@ -4,6 +4,8 @@ import Header from './Header';
 import LinkList from './LinkList';
 import { Route, Routes } from 'react-router-dom';
 import Login from './Login';
+import Search from './Search';
+
 
 const App = () => {
   return (
@@ -19,6 +21,10 @@ const App = () => {
           <Route
           path='/login'
           element={<Login />} 
+          />
+           <Route
+          path='/search'
+          element={<Search />} 
           />
         </Routes>
       </div>
